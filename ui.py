@@ -1,7 +1,7 @@
-# ch 5.2.1 ui.py
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QMessageBox, QPlainTextEdit, QHBoxLayout
+# ch 6.2.1 ui.py
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QMessageBox, QPlainTextEdit, QHBoxLayout, QLineEdit, QComboBox
 from PyQt5.QtGui import QIcon
-
+from PyQt5 import QtCore
 class View(QWidget):
 
     def __init__(self):
@@ -9,6 +9,20 @@ class View(QWidget):
         self.initUI()
 
     def initUI(self):
+        self.le1 = QLineEdit('0', self)
+        self.le1.setAlignment(QtCore.Qt.AlignRight)
+
+        self.le2 = QLineEdit('0', self)
+        self.le2.setAlignment(QtCore.Qt.AlignRight)
+
+        self.cb = QComboBox(self)
+        self.cb.addItems(['+', '-', '*', '/'])
+
+        hbox_formula = QHBoxLayout()
+        hbox_formula.addWidget(self.le1)
+        hbox_formula.addWidget(self.cb)
+        hbox_formula.addWidget(self.le2)
+
         self.te1 = QPlainTextEdit()
         self.te1.setReadOnly(True)
 
@@ -22,6 +36,7 @@ class View(QWidget):
 
         vbox = QVBoxLayout()
         vbox.addWidget(self.te1)
+        vbox.addLayout(hbox_formula)
         vbox.addLayout(hbox)
         vbox.addStretch(1)
 
