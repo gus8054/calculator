@@ -18,7 +18,8 @@ class View(QWidget):
         self.le2.setAlignment(QtCore.Qt.AlignRight)
 
         self.cb = QComboBox(self)
-        self.cb.addItems(['+', '-', '*', '/', '^', '%'])
+        # self.cb.addItems(['+', '-', '*', '/', '^', '%'])
+        self.cb.addItems(['+', '-', '*', '/'])
 
         hbox_formula = QHBoxLayout()
         hbox_formula.addWidget(self.le1)
